@@ -2,9 +2,6 @@
 
 class DCKAP_Faq_Adminhtml_CategoryController extends Mage_Adminhtml_Controller_action
 {
-	protected function _isAllowed(){
-		return Mage::getSingleton('admin/session')->isAllowed('dckap/faq/categoryitems');
-	}
 
 	protected function _initAction() {
 		$this->loadLayout()

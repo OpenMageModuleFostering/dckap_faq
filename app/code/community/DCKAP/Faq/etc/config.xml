@@ -2,7 +2,7 @@
 <config>
 	<modules>
 		<DCKAP_Faq>
-			<version>0.1.0</version>
+			<version>1.0.4</version>
 		</DCKAP_Faq>
 	</modules>
 	<frontend>
@@ -38,7 +38,7 @@
 		<menu>
 			<dckap module="faq">
 				<title>DCKAP</title>
-				<sort_order>80</sort_order>	
+				<sort_order>60</sort_order>	
 				<children>
 					<faq translate="title" module="faq">
 						<title>FAQ's Manager</title>
@@ -79,22 +79,22 @@
                             	<config>
                                 	<children>
                                     	<faq>
-                                       	 	<title>Faq Section</title>
+                                       	 	<title>Faq - All</title>
                                     	</faq>
                                 	</children>
                             	</config>
                         	</children>
                    	 	</system>
                    	 	<dckap translate="title" module="faq">
-							<title>DCKAP</title>
-							<sort_order>80</sort_order>
+							<title>Faq</title>
+							<sort_order>10</sort_order>
 							<children>
 								<faq translate="title" module="faq">
 								<title>FAQ's Manager</title>
 								<sort_order>0</sort_order>
 								<children>
 									<items translate="title" module="faq">
-										<title>Manage FAQ's</title>
+										<title>Manage FAQ'settings</title>
 										<sort_order>0</sort_order>
 										<action>faq/adminhtml_faq</action>
 									</items>

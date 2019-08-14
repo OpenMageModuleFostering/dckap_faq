@@ -1,3 +1,4 @@
+<link media="all" href="<?php echo $this->getSkinUrl('faq/css/dckap_faq.css'); ?>" type="text/css" rel="stylesheet">
 <div class="dckap_faq">
 <div class="page-title">
 	<h1>
@@ -114,14 +115,15 @@
 		$ik = 0;
 		$licount = 3;
 		$lock = 1;
-
+		$urlFull = $this->helper('core/url')->getCurrentUrl();
+		$urlWithoutParameters = explode("?", $urlFull);
 		?>
-		<li <?php if(!$categoryParam){ $lock = 0;?>class="active"<?php } ?>><a href="<?php echo Mage::getUrl('faq/*/*'); ?>" <?php if(!$categoryParam){ ?>onclick="return false"<?php } ?>>ALL FAQ's</a></li>
+		<li <?php if(!$categoryParam){ $lock = 0;?>class="active"<?php } ?>><a href="<?php echo $urlWithoutParameters[0]; ?>" <?php if(!$categoryParam){ ?>onclick="return false"<?php } ?>>ALL FAQ's</a></li>
 			<?php foreach ($categoryvalues as $category) {
 				if($ik < $licount){
 				?>
 					<li <?php if($category->getId()==$categoryParam) { $lock = 0;?>class="active"<?php } ?>>
-					<a href="<?php echo Mage::getUrl('faq/*/*').'?category='.$category->getId(); ?>"	><?php echo $category->getName(); ?>
+					<a href="<?php echo $urlWithoutParameters[0].'?category='.$category->getId(); ?>"	><?php echo $category->getName(); ?>
 					</a>
 					</li>
 				<?php
@@ -138,7 +140,7 @@
 						foreach ($categoryvalues as $category) {
 						if($ik >= $licount){
 						?>
-						<li <?php if($category->getId()==$categoryParam) { ?>class="active"<?php } ?>><a href="<?php echo Mage::getUrl('faq/*/*').'?category='.$category->getId(); ?>" ><?php echo $category->getName(); ?></a></li>
+						<li <?php if($category->getId()==$categoryParam) { ?>class="active"<?php } ?>><a href="<?php echo $urlWithoutParameters[0].'?category='.$category->getId(); ?>" ><?php echo $category->getName(); ?></a></li>
 						<?php } $ik++; } ?>
 						
 					</ul>
