@@ -36,7 +36,8 @@ class DCKAP_Faq_IndexController extends Mage_Core_Controller_Front_Action
 		$pass = 0;
 		$question = $this->getRequest()->getParam('question');
 		$category = $this->getRequest()->getParam('category');
-		
+		$answers = array();
+	      $answers["success"] = false;
 		if(Mage::getStoreConfig('faq/faq_recaptcha/faq_recaptchaselect')) {
 		
 		$captcha = $this->getRequest()->getParam('g-recaptcha-response');
@@ -63,8 +64,8 @@ class DCKAP_Faq_IndexController extends Mage_Core_Controller_Front_Action
 		}else{
 			$pass = 1;
 		}
-		if (trim($answers ['success']) == true || $pass == 1) {
-			date_default_timezone_set('<?php echo Mage::getStoreConfig("general/locale/timezone"); ?>'); 
+		if (trim($answers['success']) == true || $pass == 1) {
+			date_default_timezone_set(Mage::getStoreConfig("general/locale/timezone")); 
 			$time = date("Y-m-d H:i:s");
 			$ucustomer = 1;$cname="";$cemail="";$customerID="";
 			if(Mage::getSingleton('customer/session')->isLoggedIn()){

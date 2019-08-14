@@ -2,9 +2,6 @@
 
 class DCKAP_Faq_Adminhtml_FaqController extends Mage_Adminhtml_Controller_action
 {
-	protected function _isAllowed(){
-		return Mage::getSingleton('admin/session')->isAllowed('dckap/faq/items');
-	}
 
 	protected function _initAction() {
 		$this->loadLayout()
@@ -82,13 +79,14 @@ class DCKAP_Faq_Adminhtml_FaqController extends Mage_Adminhtml_Controller_action
 		        $question = $data["question"];
 		        $receiver = $customerData->getCustomerName();
 		        $sendto = $customerData->getCustomerEmail();
-		        
+
 		        $email->setTemplateSubject(Mage::getStoreConfig('faq/notifications/mail_subject'));
 		        $email->setSenderName(Mage::getStoreConfig('faq/notifications/mail_sendername'));
 		        $email->setSenderEmail(Mage::getStoreConfig('faq/notifications/mail_sendermail'));
 		        $faqurl = str_replace("/index.php", "", Mage::getBaseUrl())."index.php/faq";
 		        $data1 = array('question' => $question,'faq_url' => $faqurl,'receiver' => $receiver);
-		        $notified = $email->send($sendto, $receiver, $data);
+
+		        $notified = $email->send($sendto, $receiver, $data1);
 		    }
 
 			$model = Mage::getModel('faq/faq');
